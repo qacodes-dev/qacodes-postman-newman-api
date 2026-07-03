@@ -1,6 +1,6 @@
 # qa.codes — Postman + Newman API Collection
 
-[![Newman API Tests](https://github.com/qacodes-dev/qacodes-postman-newman-api/actions/workflows/newman.yml/badge.svg)](https://github.com/qacodes-dev/qacodes-postman-newman-api/actions/workflows/newman.yml)
+[![Newman API Tests](https://github.com/qacodes-dev/qacodes-postman-newman-api/actions/workflows/newman.yml/badge.svg?branch=main)](https://github.com/qacodes-dev/qacodes-postman-newman-api/actions/workflows/newman.yml)
 
 A Postman API collection turned into an automated, CI-gated check with **Newman**. It takes a
 collection a tester would normally run by hand and runs it **headless on every push** — covering
@@ -179,6 +179,12 @@ unique id + suffix so repeated runs never collide; the id is captured with
   fallbacks) — no secret is committed.
 - Uploads `reports/` with `actions/upload-artifact@v4` using `if: always()` so reports survive
   failing runs.
+
+## Contributing
+
+Contributions are welcome — see [CONTRIBUTING.md](./CONTRIBUTING.md) for how to set up,
+run the suite, add a request/assertion, and open a PR. Dependency and GitHub Actions
+updates are automated via [Dependabot](./.github/dependabot.yml).
 
 ## License
 
