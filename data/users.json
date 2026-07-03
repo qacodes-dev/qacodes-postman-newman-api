@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Grace Hopper",
+    "email": "grace@example.com",
+    "role": "admin",
+    "profile": {
+      "team": "platform",
+      "permissions": ["read", "write", "delete"]
+    }
+  },
+  {
+    "name": "Alan Turing",
+    "email": "alan@example.com",
+    "role": "engineer",
+    "profile": {
+      "team": "research",
+      "permissions": ["read", "write"]
+    }
+  },
+  {
+    "name": "Katherine Johnson",
+    "email": "katherine@example.com",
+    "role": "analyst",
+    "profile": {
+      "team": "data",
+      "permissions": ["read"]
+    }
+  }
+]

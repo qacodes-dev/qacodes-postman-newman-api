@@ -1,0 +1,44 @@
+name: Newman API Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  newman:
+    name: Run Postman collection with Newman
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Prepare environment file
+        run: cp environments/staging.postman_environment.example.json environments/staging.postman_environment.json
+
+      - name: Run Newman
+        run: >
+          npx newman run collections/qacodes-api.postman_collection.json
+          -e environments/staging.postman_environment.json
+          -r cli,htmlextra,junit
+          --reporter-htmlextra-export reports/report.html
+          --reporter-junit-export reports/junit.xml
+          --env-var "BASE_URL=${{ secrets.BASE_URL || 'https://postman-echo.com' }}"
+          --env-var "API_KEY=${{ secrets.API_KEY || 'ci_demo_key' }}"
+          --timeout-request 10000
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-reports
+          path: reports/

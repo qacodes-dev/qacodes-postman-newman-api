@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Generated reports (keep the folder, ignore its contents)
+reports/*
+!reports/.gitkeep
+
+# Real Postman environment files with secrets — commit only the *.example.json
+environments/*.postman_environment.json
+!environments/*.example.json
+
+# Local env
+.env
+
+# Build brief / scaffolding (not part of the shipped repo)
+_CONVENTIONS.md
+
+# OS / editor
+.DS_Store
+*.log
+npm-debug.log*

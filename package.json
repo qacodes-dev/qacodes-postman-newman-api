@@ -1,0 +1,25 @@
+{
+  "name": "qacodes-postman-newman-api",
+  "version": "1.0.0",
+  "description": "A Postman API collection run headless in CI with Newman — environments, pm.test assertions, data-driven CSV/JSON runs, and HTML + JUnit reports.",
+  "scripts": {
+    "test": "newman run collections/qacodes-api.postman_collection.json -e environments/staging.postman_environment.json -r cli,htmlextra,junit --reporter-htmlextra-export reports/report.html --reporter-junit-export reports/junit.xml",
+    "test:html": "newman run collections/qacodes-api.postman_collection.json -e environments/staging.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export reports/report.html",
+    "test:data": "newman run collections/qacodes-api.postman_collection.json -e environments/staging.postman_environment.json -d data/users.csv",
+    "test:data:json": "newman run collections/qacodes-api.postman_collection.json -e environments/staging.postman_environment.json -d data/users.json"
+  },
+  "keywords": [
+    "postman",
+    "newman",
+    "api-testing",
+    "crud",
+    "data-driven",
+    "ci"
+  ],
+  "author": "qa.codes",
+  "license": "MIT",
+  "devDependencies": {
+    "newman": "^6.2.1",
+    "newman-reporter-htmlextra": "^1.23.1"
+  }
+}
